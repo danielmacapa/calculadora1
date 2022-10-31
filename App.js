@@ -8,7 +8,7 @@ export default function App() {
   const [resultado, setResultado]=useState('')
 
   const soma=()=>{
-    setResultado(parseInt(valor1)+parseInt(valor2))
+    setResultado(parseInt(valor1)+parseInt(valor2)) 
   }
 
   return (
