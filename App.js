@@ -1,20 +1,73 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { SafeAreaView, StyleSheet, Text, TouchableHighlight, View, TextInput } from 'react-native';
 
 export default function App() {
+
+  const [valor1, setValor1]=useState('')
+  const [valor2, setValor2]=useState('')
+  const [resultado, setResultado]=useState('')
+
+  const soma=()=>{
+    setResultado(parseInt(valor1)+parseInt(valor2))
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.conteiner}>
+      <Text></Text>
+      <Text>CALCULADORA SIMPLES</Text>
+      <Text></Text>
+      <Text>Informe o primeiro número:</Text>
+      <TextInput
+      style={styles.display}
+      value={String(valor1)}
+      onChangeText={(texto)=>{setValor1(texto)}}>
+      </TextInput>
+
+      <Text></Text>
+      <Text>Informe o segundo número:</Text>
+      <TextInput
+      style={styles.display}
+      value={String(valor2)}
+      onChangeText={(texto)=>{setValor2(texto)}}>
+      </TextInput>
+
+      <Text></Text>
+      <TouchableHighlight
+        style={styles.btn}
+        onPress={()=>soma()}>
+        <Text>SOMAR</Text>
+      </TouchableHighlight>
+
+      <Text></Text>
+      <Text>RESULTADO:</Text>
+      <TextInput
+      style={styles.display}
+      value={String(resultado)}
+      onChangeText={(texto)=>{setResultado(texto)}}>
+      </TextInput>
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  conteiner:{
+    marginTop: 30,
+    padding:20,
+  },
+
+  display:{
+    borderWidth:1,
+    borderRadius:10,
+    padding:10
+  
+  },
+  btn:{
+    backgroundColor:'red',
+    padding:20,
+    borderRadius:10,
+    width: 120,
+
+
   },
 });
